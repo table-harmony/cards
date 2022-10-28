@@ -1,0 +1,154 @@
+﻿body {
+  background-color: black;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.card-groups,
+.card-group,
+.card {
+  aspect-ratio: 5 / 7;
+}
+.card-groups,
+.card-group,
+.big-card {  
+  width: 30vmin;
+}
+
+.card-group {
+  position: absolute;
+  transition: transform 400ms ease;
+}
+
+.card-group[data-status="unknown"] {
+  transform: scale(0);
+  transition: none;
+}
+
+.card-group[data-status="active"] {
+  transition-delay: 300ms;
+}
+
+.card-group[data-status="after"] {
+  transform: translateX(50%) scale(0);
+}
+
+.card-group[data-status="before"] {
+  transform: translateX(-50%) scale(0);
+}
+
+.card-group[data-status="becoming-active-from-after"] {
+  transform: translateX(50%) scale(0);
+  transition: none;
+}
+
+.card-group[data-status="becoming-active-from-before"] {
+  transform: translateX(-50%) scale(0);
+  transition: none;
+}
+
+.card {
+  transition: transform 800ms cubic-bezier(.05, .43, .25, .95);
+  position: absolute;
+  background-size: cover;
+  background-position: center;
+}
+
+.big-card {
+  border-radius: 1vmin;
+  width: 30vmin;
+  z-index: 1;
+}
+
+.little-card {
+    box-shadow: -1vmin 1vmin 2vmin rgba(0, 0, 0, 0.25);
+  width: 12vmin;
+  border-radius: 2vmin;
+  transform: translate(75%, 75%);
+}
+
+.big-card:nth-child(1) {
+  transform: translate(-20%) rotate(-7deg);
+}
+
+.big-card:nth-child(2) {
+  transform: translate(-7.5%); 
+}
+
+.big-card:nth-child(3) {
+    transform: translate(15%) rotate(5deg);
+}
+
+.big-card:nth-child(4) {
+    transform: translate(35%, 5%) rotate(10deg);
+}
+
+.card-group:hover .big-card:nth-child(1) {
+   transform: translate(-80%, 10%) rotate(-20deg);
+}
+
+.card-group:hover .big-card:nth-child(2) {
+   transform: translate(-40%) rotate(-10deg);
+}
+
+.card-group:hover .big-card:nth-child(3) {
+   transform: translate(20%) rotate(10deg);
+}
+
+.card-group:hover .big-card:nth-child(4) {
+   transform: translate(80%, 10%) rotate(20deg);
+}
+
+.card-group:hover .little-card {
+  z-index: 2;
+}
+
+.card-group:hover .little-card:nth-child(5) {
+   transform: translate(-150%, -50%) rotate(7deg);
+}
+
+.card-group:hover .little-card:nth-child(6) {
+   transform: translate(-200%, 250%) rotate(-7.5deg);
+}
+
+.card-group:hover .little-card:nth-child(7) {
+   transform: translate(350%, -30%) rotate(-5deg);
+}
+
+.card-group:hover .little-card:nth-child(8) {
+   transform: translate(300%, 255%) rotate(15deg);
+}
+
+#card-swiper-buttons {
+  margin-top: 20vmin;
+  display: flex;
+  padding: 0vmin 4vmin;
+  justify-content: space-evenly;  
+}
+
+#card-swiper-buttons > button {
+  font-size: 2.5vmin;
+  border: 0.4vmin solid;
+  border-radius: 100%;
+  background-color: transparent;
+  width: 7vmin;
+  height: 7vmin;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  margin: 10px;
+  transition: width 300ms, height 300ms;
+  transform: translate(200%);
+}
+
+#love-button {
+  color: blue;
+  border-color: blue;
+}
+
+#hate-button {
+  color: white;
+  border-color: rgb(200, 200, 200);
+}
+
