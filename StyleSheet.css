@@ -140,15 +140,12 @@
   margin: 10px;
   transition: width 300ms, height 300ms;
   transform: translate(200%);
-}
-
-#love-button {
-  color: blue;
-  border-color: blue;
-}
-
-#hate-button {
   color: white;
   border-color: rgb(200, 200, 200);
 }
+
+#card-swiper-buttons > button:hover {
+  box-shadow: 0 0 10px rgb(200, 200, 200); 
+}
+
 
