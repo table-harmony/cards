@@ -1,26 +1,49 @@
 ﻿body {
-  background-color: black;
+  background-color: var(--background-clr);
+  margin: 0px;
   display: grid;
   place-items: center;
   height: 100vh;
-  margin: 0;
 }
 
-.card-groups,
+:root {
+  --background-clr: rgb(20, 20, 20);
+  
+  --switch-duration: 400ms;
+  
+  --little-card-duration: 700ms;
+  --little-card-width: 13vmin;
+  --little-card-shadow-clr: rgba(100, 100, 0, 0.25);
+  
+  --big-card-duration: 600ms;
+  --big-card-width: 30vmin;
+  --big-card-shadow-clr: rgba(0, 0, 0, 0.7);
+  
+  --card-aspect-ratio: 5 / 7;
+  
+  --button-size: 9vmin;
+  --button-font-size: 3.5vmin;
+  --button-clr: rgb(200, 200, 200);
+  --button-background-clr: rgb(200, 200, 200);
+}
+
+.card-groups, 
 .card-group,
 .card {
-  aspect-ratio: 5 / 7;
+  aspect-ratio: var(--card-aspect-ratio);
 }
 
 .card-groups,
 .card-group,
 .big-card {  
-  width: 30vmin;
+  width: var(--big-card-width);
 }
 
+
 .card-group {
+  transform: translate(-50%);
   position: absolute;
-  transition: transform 400ms ease;
+  transition: transform var(--switch-duration) ease;
 }
 
 .card-group[data-status="unknown"] {
@@ -37,7 +60,7 @@
 }
 
 .card-group[data-status="before"] {
-  transform: translateX(-75%) scale(0) rotate(-25deg);
+  transform: translateX(-150%) scale(0) rotate(-25deg);
 }
 
 .card-group[data-status="becoming-active-from-after"] {
@@ -46,30 +69,37 @@
 }
 
 .card-group[data-status="becoming-active-from-before"] {
-  transform: translateX(-75%) scale(0) rotate(-25deg);
+  transform: translateX(-150%) scale(0) rotate(-25deg);
   transition: none;
 }
 
+
 .card {
-  transition: transform 600ms cubic-bezier(.05, .43, .25, .95);
   position: absolute;
   background-size: cover;
   background-position: center;
+  transition: transform cubic-bezier(.05, .43, .25, .95);
 }
 
 .big-card {
+    box-shadow: -1.5vmin 1.5vmin 2vmin var(--big-card-shadow-clr);
   border-radius: 3vmin;
-  width: 30vmin;
-  z-index: 1;
+  z-index: 2;
+  transition-duration: var(--big-card-duration);
 }
 
 .little-card {
-  box-shadow: -1vmin 1vmin 2vmin rgba(0, 0, 0, 0.25);
-  width: 13vmin;
+  width: var(--little-card-width);
   border-radius: 2.5vmin;
-  transform: translate(75%, 75%);
-  transition-duration: 700ms;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  transition-duration: var(--little-card-duration);
+  box-shadow: -0.5vmin 0.5vmin 2vmin var(--little-card-shadow-clr);
+  
 }
+
 
 .big-card:nth-child(1) {
   transform: translate(-20%) rotate(-7deg);
@@ -87,65 +117,58 @@
     transform: translate(35%, 5%) rotate(10deg);
 }
 
-.card-group:hover .big-card:nth-child(1) {
+
+.card-group:hover > .big-card:nth-child(1) {
    transform: translate(-80%, 10%) rotate(-20deg);
 }
 
-.card-group:hover .big-card:nth-child(2) {
+.card-group:hover > .big-card:nth-child(2) {
    transform: translate(-40%) rotate(-10deg);
 }
 
-.card-group:hover .big-card:nth-child(3) {
+.card-group:hover > .big-card:nth-child(3) {
    transform: translate(20%) rotate(10deg);
 }
 
-.card-group:hover .big-card:nth-child(4) {
+.card-group:hover > .big-card:nth-child(4) {
    transform: translate(80%, 10%) rotate(20deg);
 }
 
-.card-group:hover .little-card:nth-child(5) {
-   z-index: 2;
-   transform: translate(-125%, -50%) rotate(10deg);
+.card-group:hover > .little-card:nth-child(5) {
+   transform: translate(-270%, -175%) rotate(10deg);
+   z-index: 3;
 }
 
-.card-group:hover .little-card:nth-child(6) {
-   z-index: 2;
-   transform: translate(-175%, 240%) rotate(-10deg);
+.card-group:hover > .little-card:nth-child(6) {
+   transform: translate(-275%, 125%) rotate(-10deg);
+   z-index: 3;
 }
 
-.card-group:hover .little-card:nth-child(7) {
-   transform: translate(340%, -45%) rotate(-15deg);
+.card-group:hover > .little-card:nth-child(7) {
+   transform: translate(200%, -165%) rotate(-15deg);
 }
 
-.card-group:hover .little-card:nth-child(8) {
-   transform: translate(280%, 260%) rotate(10deg);
+.card-group:hover > .little-card:nth-child(8) {
+   transform: translate(195%, 145%) rotate(10deg);
 }
+
 
 #card-swiper-buttons {
-  margin-top: 20vmin;
-  display: flex;
-  padding: 0vmin 4vmin;
-  justify-content: space-evenly;  
+  margin-top: 25vmin;
 }
 
 #card-swiper-buttons > button {
-  font-size: 2.5vmin;
-  border: 0.4vmin solid;
+  font-size: var(--button-font-size);
+  border: 0.4vmin solid var(--button-background-clr);
   border-radius: 100%;
-  background-color: transparent;
-  width: 7vmin;
-  height: 7vmin;
-  display: grid;
-  place-items: center;
+  background: transparent;
+  color: var(--button-clr);
+  width: var(--button-size);
+  height: var(--button-size);
+  margin: 0vmin 3vmin;
   cursor: pointer;
-  margin-left: 7.5vmin;
-  transition: width 300ms, height 300ms;
-  transform: translate(200%);
-  color: white;
-  border-color: rgb(200, 200, 200);
 }
 
 #card-swiper-buttons > button:hover {
-  box-shadow: 0 0 10px rgb(200, 200, 200); 
+  box-shadow: 0 0 7.5px var(--button-background-clr);
 }
-
