@@ -3,132 +3,81 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title></title>
-    <link rel="stylesheet" href="StyleSheet.css" />
-    <script src="Script.js"></script>
+    <title>Anime</title>
+    <script src="Script1.js"></script>
     <script src="https://kit.fontawesome.com/944eb371a4.js"></script>
+    <script src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+    <link rel="stylesheet" href="StyleSheet.css" />
 </head>
 <body>
+    <input type="file" id="excel-file" />
 
-    <div id="card-groups"> 
-    <div class="card-group" data-index="0" data-status="active">
+    <div id="card-groups"></div>
 
-      <div class="card big-card" style="background-image: url(https://i.pinimg.com/564x/86/10/7d/86107de5259df440db2b35f5844ba026.jpg)"></div>
-      <div class="card big-card" style="background-image: url(https://i.pinimg.com/564x/dd/87/11/dd8711f689b20c2978decb26084fb76c.jpg)"></div>
-      <div class="card big-card" style="background-image: url(https://w0.peakpx.com/wallpaper/124/858/HD-wallpaper-kaito-kid-anime-cool-weeb.jpg)"></div>
-      <div class="card big-card" style="background-image: url(https://i.pinimg.com/564x/f9/bf/c8/f9bfc852e897c6f17969845843ced6a9.jpg)"></div>
-      <div class="card little-card" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-c8ya8EySV_xWuJ0J1Rl5yAI3FyF6RFB26w&usqp=CAU)"></div>
-      <div class="card little-card" style="background-image: url(https://shareiitnow.b-cdn.net/wp-content/uploads/2021/03/Kaitou-Kid-quotes.jpg)"></div>
-      <div class="card little-card" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJiSgYdbLF5agQGZYkyoDVTYo2NgQq3-pojA&usqp=CAU)"></div>
-      <div class="card little-card" style="background-image: url(https://i1.sndcdn.com/artworks-000315353391-3y8scl-t500x500.jpg)"></div>
-
+    <div id="card-swiper-buttons">
+        <button onclick="handleLeftButton()">
+            <i class="fa-solid fa-arrow-left"></i>
+        </button>
+        <button onclick="handleRightButton()">
+            <i class="fa-solid fa-arrow-right"></i>
+        </button>
     </div>
-    <div class="card-group" data-index="1" data-status="unknown">
-      <div class="card big-card" style="background-image: url(https://rare-gallery.com/mocahbig/1393641-Dabi-My-Hero-Academia-Boku-no-Hero-Academia-Anime.jpg)"></div>
-      <div class="card big-card" style="background-image: url(https://i.pinimg.com/564x/f8/47/eb/f847eb43dadaed556746ff696a461845.jpg)"></div>
-      <div class="card big-card" style="background-image: url(https://i.pinimg.com/564x/51/5d/63/515d63fc509d6a4aa94e15be03c670dd.jpg)"></div>
-      <div class="card big-card" style="background-image: url(https://i.pinimg.com/564x/97/f3/2d/97f32d2878eaf0f47443d97563c599ba.jpg)"></div>
-      <div class="card little-card" style="background-image: url(https://i.pinimg.com/474x/b5/18/2e/b5182eb696693eea596349da430dfcc9.jpg)"></div>
-      <div class="card little-card" style="background-image: url(https://i.pinimg.com/originals/ee/8b/5c/ee8b5c9be714980c6a73d2e2e28fa005.png)"></div>
-      <div class="card little-card" style="background-image: url(https://cdn.myanimelist.net/images/characters/6/454749.jpg)"></div>
-      <div class="card little-card" style="background-image: url(https://static1.cbrimages.com/wordpress/wp-content/uploads/2019/03/my-hero-academia-dabi.jpg)"></div>
 
-    </div>
-    <div class="card-group" data-index="2" data-status="unknown">
+    <script>
 
-      <div class="card big-card" style="background-image: url(https://i.pinimg.com/564x/64/c7/5d/64c75db2693d250de5d6565dcc3fefce.jpg)"></div>
-      <div class="card big-card" style="background-image: url(https://i.pinimg.com/564x/8a/9f/6f/8a9f6fdba8e522770b6e62ae9550e1e3.jpg)"></div>
-      <div class="card big-card" style="background-image: url(https://i.pinimg.com/564x/17/6e/41/176e419fcfe8e8ecb45e97f055e0c3ae.jpg)"></div>
-      <div class="card big-card" style="background-image: url(https://i.pinimg.com/originals/64/f9/98/64f998a4fbc6bd298253f2e0585c7af2.jpg)"></div>
-      <div class="card little-card" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCf2lov6wG0IVu9ZGsbnj0xh29nIfJVCcBe2XP9bALliJ_s2lVUCN2f5nusz41Bqd9V2o&usqp=CAU)"></div>
-      <div class="card little-card" style="background-image: url(https://img.wattpad.com/cover/280683487-256-k523865.jpg)"></div>
-      <div class="card little-card" style="background-image: 
-url(https://i.pinimg.com/736x/10/b1/5a/10b15a3afde3795dcd8f68450698a808.jpg)"></div>
-<div class="card little-card" style="background-image: url(https://i.pinimg.com/564x/f9/31/76/f931764210eb1dca0fb71b1fcd468cdc.jpg)"></div>
+        const excelFile = document.getElementById('excel-file');
 
-    </div>
-    <div class="card-group" data-index="3" data-status="unknown">
+        excelFile.addEventListener('change', (event) => {
 
-      <div class="card big-card" style="background-image: url(https://i.pinimg.com/564x/01/df/9e/01df9e198d51bbf275bcb589524693b5.jpg)"></div>
-      <div class="card big-card" style="background-image: url(https://i.pinimg.com/564x/4c/56/6b/4c566be5aeb6babd50cfb7cfaf8aff3d.jpg)"></div>
-      <div class="card big-card" style="background-image: url(https://i.pinimg.com/564x/cb/69/76/cb69765405c916efc9f760a87f1ff01e.jpg)"></div>
-      <div class="card big-card" style="background-image: url(               https://i.pinimg.com/564x/ba/90/26/ba902628421474292346af10cba888d3.jpg)"></div>
-      <div class="card little-card" style="background-image: url(https://i.pinimg.com/564x/82/b5/8f/82b58faf402caf9815952992aae88dad.jpg)"></div>
-      <div class="card little-card" style="background-image: url(https://i.pinimg.com/564x/99/80/df/9980dfd42add36b7b50a9a69d9187fac.jpg)"></div>
-      <div class="card little-card" style="background-image: url(https://i.pinimg.com/564x/48/47/86/4847868c13b6fb7ff3d4260f6053d2b4.jpg)"></div>
-      <div class="card little-card" style="background-image: url(https://i.pinimg.com/564x/6e/34/af/6e34afe46143e8632130710c618a9ba8.jpg)"></div>
+            var reader = new FileReader();
 
-    </div>
-    <div class="card-group" data-index="4" data-status="unknown">
+            reader.readAsArrayBuffer(event.target.files[0]);
 
-      <div class="card big-card" style="background-image: url(https://i.pinimg.com/564x/e8/5e/ad/e85ead4758ccfe5363fdea809017f60d.jpg)"></div>
-      <div class="card big-card" style="background-image: url(https://i.pinimg.com/564x/96/a2/d8/96a2d85b6ee6935f19f94200a23fe982.jpg)"></div>
-      <div class="card big-card" style="background-image: url(https://i.pinimg.com/564x/23/5d/4c/235d4cd68f1b18e432079078b04b07c9.jpg)"></div>
-      <div class="card big-card" style="background-image: url(               https://i.pinimg.com/564x/a8/bf/6b/a8bf6b1d274378bdf1737b9e8bc0f30a.jpg)"></div>
-      <div class="card little-card" style="background-image: url(https://i.pinimg.com/564x/9c/e8/09/9ce809e8d3bdf555e1e80e0e234ecf85.jpg)"></div>
-      <div class="card little-card" style="background-image: url(https://i.pinimg.com/564x/62/d4/60/62d4606e347b7e35924224d110a16b56.jpg)"></div>
-      <div class="card little-card" style="background-image: url(https://i.pinimg.com/564x/21/a2/23/21a2239f1f2374daada1535c2abf086b.jpg)"></div>
-      <div class="card little-card" style="background-image: url(https://i.pinimg.com/736x/49/09/95/49099574b207c64bc85d3f76f042df9d.jpg)"></div>
+            reader.onload = function (event) {
 
-    </div>
-    <div class="card-group" data-index="5" data-status="unknown">
+                var data = new Uint8Array(reader.result);
 
-      <div class="card big-card" style="background-image: url(                               https://i.pinimg.com/564x/2c/36/89/2c368973e931ece37835f01b711a93fb.jpg)"></div>
-      <div class="card big-card" style="background-image: url(https://i.pinimg.com/564x/42/68/fb/4268fbb38daadcbc759430d6e456dbf2.jpg)"></div>
-      <div class="card big-card" style="background-image: url(                    https://i.pinimg.com/750x/62/3c/74/623c742b5e63878e1c3c55559fc92290.jpg)"></div>
-      <div class="card big-card" style="background-image: url(               https://i.pinimg.com/564x/77/70/1d/77701d9d8ccba3e6c2d1036e76ca338b.jpg)"></div>
-      <div class="card little-card" style="background-image: url(https://i.pinimg.com/564x/9b/0f/d7/9b0fd7ce89413a7697a38aca0750753c.jpg)"></div>
-      <div class="card little-card" style="background-image: url(https://i.pinimg.com/736x/ff/b5/3f/ffb53f75eaf305351c986f4558d34b52.jpg)"></div>
-      <div class="card little-card" style="background-image: url( https://i.pinimg.com/736x/e3/97/a4/e397a4b7f4d1d8665a1ec9784fbbecaf.jpg)"></div>
-      <div class="card little-card" style="background-image: url(https://i.pinimg.com/564x/da/dd/7a/dadd7a39b76af7ed85e9d909451751aa.jpg)"></div>
+                var workBook = XLSX.read(data, { type: 'array' });
 
-    </div>
-    <div class="card-group" data-index="6" data-status="unknown">
+                var sheetName = workBook.SheetNames;
 
-      <div class="card big-card" style="background-image: url(                               https://i.pinimg.com/736x/68/7f/25/687f253cb57755a85d209b012c4296cb.jpg)"></div>
-      <div class="card big-card" style="background-image: url(https://i.pinimg.com/564x/ad/df/5b/addf5be8aa060aa6bdbb8b554965aa70.jpg)"></div>
-      <div class="card big-card" style="background-image: url(                   https://i.pinimg.com/564x/e9/fe/51/e9fe5196ad030b4fb2d053109713c69e.jpg)"></div>
-      <div class="card big-card" style="background-image: url(               https://i.pinimg.com/564x/e9/e2/83/e9e28391ad66918896d4098ed30111f6.jpg)"></div>
-      <div class="card little-card" style="background-image: url(https://i.pinimg.com/564x/98/ab/dd/98abdd4e4baa3eed678260a2da1d0cc5.jpg)"></div>
-      <div class="card little-card" style="background-image: url(https://i.pinimg.com/736x/d7/2f/3d/d72f3d0b0b3a8b896bcffe51d001410d.jpg)"></div>
-      <div class="card little-card" style="background-image: url( https://i.pinimg.com/564x/69/18/3d/69183dc67406d4aeba5d22d2447ec51c.jpg)"></div>
-      <div class="card little-card" style="background-image: url(https://i.pinimg.com/564x/15/06/05/15060508cf42ef783a91805568fab19b.jpg)"></div>
+                var sheetData = XLSX.utils.sheet_to_json(workBook.Sheets[sheetName[0]], { header: 1 });
 
-    </div>
-    <div class="card-group" data-index="7" data-status="unknown">
+                var cardGroups = "";  // card groups
+                var cardGroupIndex = -1;
 
-      <div class="card big-card" style="background-image: url(                               https://i.pinimg.com/564x/fc/77/b7/fc77b7dd70f32128d5dcfe7b4c0160c6.jpg)"></div>
-      <div class="card big-card" style="background-image: url(                               https://i.pinimg.com/564x/98/1c/a2/981ca28788d5148937a8b1ebae798c2d.jpg)"></div>
-      <div class="card big-card" style="background-image: url(                   https://i.pinimg.com/736x/38/54/5c/38545c636b3c70148f16740023d9cdde.jpg)"></div>
-      <div class="card big-card" style="background-image: url(               https://i.pinimg.com/564x/9e/4f/90/9e4f904ea564220e3f8ea78ff10f48d3.jpg)"></div>
-      <div class="card little-card" style="background-image: url(https://i.pinimg.com/564x/4a/83/b5/4a83b515cd4f6dd9873aac219166ffb8.jpg)"></div>
-      <div class="card little-card" style="background-image: url(https://i.pinimg.com/564x/9a/3b/76/9a3b768a47c5969f201d27b63da10f61.jpg)"></div>
-      <div class="card little-card" style="background-image: url( https://i.pinimg.com/564x/63/bf/8e/63bf8e1dd01c3be968da34a2745eb641.jpg)"></div>
-      <div class="card little-card" style="background-image: url(https://i.pinimg.com/564x/c7/8f/6e/c78f6e5e17f89a136c347e83240f7448.jpg)"></div>
+                for (var row = 0; row < sheetData.length; row++) {
 
-    </div>
-    <div class="card-group" data-index="8" data-status="unknown">
+                    // if hero exists on row
+                    if (sheetData[row][0]) {
 
-      <div class="card big-card" style="background-image: url(https://i.pinimg.com/564x/71/0d/e9/710de9834678ef54c584b04dc50e6678.jpg)"></div>
-      <div class="card big-card" style="background-image: url(https://i.pinimg.com/736x/92/ca/a6/92caa6e1fb19e15e1afec59c353f5e7e.jpg)"></div>
-      <div class="card big-card" style="background-image: url(https://i.pinimg.com/564x/fc/71/e1/fc71e184dde830c8526eae5a0e2b97c4.jpg)"></div>
-      <div class="card big-card" style="background-image: url(https://i.pinimg.com/564x/64/5f/1e/645f1e532efb40b76d1d995acfa5e7c0.jpg)"></div>
-      <div class="card little-card" style="background-image: url(https://i.pinimg.com/564x/7a/4d/40/7a4d40d6e42910324da6f722ae08b86c.jpg)"></div>
-      <div class="card little-card" style="background-image: url(https://i.pinimg.com/564x/de/b0/17/deb017ef24b000794eb143794591ec87.jpg)"></div>
-      <div class="card little-card" style="background-image: url(https://i.pinimg.com/564x/0d/84/f3/0d84f30d4f142c516a727a33ebb19b45.jpg)"></div>
-      <div class="card little-card" style="background-image: url(https://i.pinimg.com/736x/6b/b0/31/6bb031fc11613d8f9b4d95b81ae9020d.jpg)"></div>
+                        // card group settings 
+                        cardGroupIndex += 1;
+                        var cardGroupStatus = cardGroupIndex == 0 ? "active" : "unknown";
 
-    </div>
-  </div>
+                        var cardGroup = `<div class='card-group' data-index='${cardGroupIndex}' data-status='${cardGroupStatus}'>`;  // card group
 
-<div id="card-swiper-buttons">
-      <button onclick="handleLeftButton()">
-  <i class="fa-solid fa-arrow-left"></i>    
-    </button>
-      <button onclick="handleRightButton()">
-  <i class="fa-solid fa-arrow-right"></i>
-    </button>
-  </div>
+                        for (var col = 0; col < 8; col++) {
 
+                            // card settings
+                            var cardType = col < 4 ? "big-card" : "little-card", cardLink = sheetData[row + col + 1][1];
+
+                            var card = `<div class='card ${cardType}' style='background-image: url(${cardLink})'></div>`;  // card 
+
+                            cardGroup += card;  // adding the card to its group
+                        }
+
+                        cardGroup += "</div>";
+                        cardGroups += cardGroup;  // adding the card group to the card groups
+                    }
+
+                }
+
+                document.getElementById("card-groups").innerHTML = cardGroups;
+                console.log(cardGroups);
+                groups = document.getElementsByClassName("card-group").length;
+            }
+        });
+    </script>
 </body>
 </html>
