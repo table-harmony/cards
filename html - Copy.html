@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="StyleSheet.css" />
+    <script src="Script.js"></script>
+    <script src="https://kit.fontawesome.com/944eb371a4.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+
+   <div id="card-groups"></div> 
+
+<div id="card-swiper-buttons">
+      <button onclick="handleLeftButton()">
+  <i class="fa-solid fa-arrow-left"></i>    
+    </button>
+      <button onclick="handleRightButton()">
+  <i class="fa-solid fa-arrow-right"></i>
+    </button>
+  </div>
+                <input type="file" id="excel_file" />
+
+<script>
+
+    const excel_file = document.getElementById('excel_file');
+            console.log(excel_file);	
+
+    excel_file.addEventListener('change', (event) => {
+
+        var reader = new FileReader();
+
+        reader.readAsArrayBuffer(event.target.files[0]);
+
+        reader.onload = function (event) {
+
+            var data = new Uint8Array(reader.result);
+
+            var work_book = XLSX.read(data, { type: 'array' });
+
+            var sheet_name = work_book.SheetNames;
+
+            var sheet_data = XLSX.utils.sheet_to_json(work_book.Sheets[sheet_name[0]], { header: 1 });
+
+            var cardGroupsOutput = "";
+
+            for (var row = 0; row < sheet_data.length; row++) {
+
+                var cardGroupOutput = "";
+
+                for (var col = 1; col < sheet_data[row].length; col++) {
+
+                    var cardType = col <= 4 ? "big-card" : "little-card", cellData = sheet_data[row][col];
+
+                    var cellOutput = "<div class: 'card" + cardType + "' style='background-image: url(" + cellData + ")></div>"
+
+                    cardGroupOutput += cellOutput;
+                }
+
+                cardGroupsOutput += cardGroupOutput;
+
+            }
+            console.log(cardGroupsOutput);	
+            document.getElementById("card-groups").innerHTML = cardGroupsOutput;
+        }
+    });
+</script>
+</body>
+</html>
