@@ -1,9 +1,9 @@
 ﻿body {
-  background-color: var(--background-clr);
-  margin: 0px;
-  display: grid;
-  place-items: center;
-  height: 100vh;
+    background-color: var(--background-clr);
+    margin: 0px;
+    height: 100vh;
+    display: grid;
+    place-items: center;
 }
 
 :root {
@@ -41,9 +41,9 @@
 
 
 .card-group {
-  transform: translate(-50%);
-  position: absolute;
-  transition: transform var(--switch-duration) ease;
+    position: absolute;
+    transform: translateX(-50%);
+    transition: transform var(--switch-duration) ease;
 }
 
 .card-group[data-status="unknown"] {
@@ -101,56 +101,30 @@
 }
 
 
-.big-card:nth-child(1) {
-  transform: translate(-20%) rotate(-7deg);
-}
+.big-card:nth-child(1) {transform: translate(-20%) rotate(-7deg);}
 
-.big-card:nth-child(2) {
-  transform: translate(-7.5%); 
-}
+.big-card:nth-child(2) {transform: translate(-7.5%); }
 
-.big-card:nth-child(3) {
-    transform: translate(15%) rotate(5deg);
-}
+.big-card:nth-child(3) {transform: translate(15%) rotate(5deg);}
 
-.big-card:nth-child(4) {
-    transform: translate(35%, 5%) rotate(10deg);
-}
+.big-card:nth-child(4) {transform: translate(35%, 5%) rotate(10deg);}
 
 
-.card-group:hover > .big-card:nth-child(1) {
-   transform: translate(-80%, 10%) rotate(-20deg);
-}
+.card-group:hover > .big-card:nth-child(1) {transform: translate(-80%, 10%) rotate(-20deg);}
 
-.card-group:hover > .big-card:nth-child(2) {
-   transform: translate(-40%) rotate(-10deg);
-}
+.card-group:hover > .big-card:nth-child(2) {transform: translate(-40%) rotate(-10deg);}
 
-.card-group:hover > .big-card:nth-child(3) {
-   transform: translate(20%) rotate(10deg);
-}
+.card-group:hover > .big-card:nth-child(3) {transform: translate(20%) rotate(10deg);}
 
-.card-group:hover > .big-card:nth-child(4) {
-   transform: translate(80%, 10%) rotate(20deg);
-}
+.card-group:hover > .big-card:nth-child(4) {transform: translate(80%, 10%) rotate(20deg);}
 
-.card-group:hover > .little-card:nth-child(5) {
-   transform: translate(-270%, -175%) rotate(10deg);
-   z-index: 3;
-}
+.card-group:hover > .little-card:nth-child(5) {transform: translate(-270%, -175%) rotate(10deg); z-index: 3;}
 
-.card-group:hover > .little-card:nth-child(6) {
-   transform: translate(-275%, 125%) rotate(-10deg);
-   z-index: 3;
-}
+.card-group:hover > .little-card:nth-child(6) {transform: translate(-277.5%, 127.5%) rotate(-10deg); z-index: 3;}
 
-.card-group:hover > .little-card:nth-child(7) {
-   transform: translate(200%, -165%) rotate(-15deg);
-}
+.card-group:hover > .little-card:nth-child(7) {transform: translate(205%, -170%) rotate(-15deg);}
 
-.card-group:hover > .little-card:nth-child(8) {
-   transform: translate(195%, 145%) rotate(10deg);
-}
+.card-group:hover > .little-card:nth-child(8) {transform: translate(195%, 145%) rotate(10deg);}
 
 
 #card-swiper-buttons {
@@ -171,4 +145,10 @@
 
 #card-swiper-buttons > button:hover {
   box-shadow: 0 0 7.5px var(--button-background-clr);
+}
+
+input {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
 }

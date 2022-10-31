@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="StyleSheet.css" />
 </head>
 <body>
-    <input type="file" id="excel-file" />
 
     <div id="card-groups"></div>
 
@@ -22,6 +21,8 @@
             <i class="fa-solid fa-arrow-right"></i>
         </button>
     </div>
+
+    <input type="file" id="excel-file"/>
 
     <script>
 
@@ -39,11 +40,12 @@
 
                 var workBook = XLSX.read(data, { type: 'array' });
 
-                var sheetName = workBook.SheetNames;
+                // sheet 
+                var sheetName = workBook.SheetNames;  // name
+                var sheetData = XLSX.utils.sheet_to_json(workBook.Sheets[sheetName[0]], { header: 1 });  // data 
 
-                var sheetData = XLSX.utils.sheet_to_json(workBook.Sheets[sheetName[0]], { header: 1 });
-
-                var cardGroups = "";  // card groups
+                // cards
+                var cardGroups = "";
                 var cardGroupIndex = -1;
 
                 for (var row = 0; row < sheetData.length; row++) {
@@ -74,7 +76,6 @@
                 }
 
                 document.getElementById("card-groups").innerHTML = cardGroups;
-                console.log(cardGroups);
                 groups = document.getElementsByClassName("card-group").length;
             }
         });
