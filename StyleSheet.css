@@ -7,8 +7,10 @@
 }
 
 :root {
-  --background-clr: rgb(20, 20, 20);
-  
+  --background-clr: rgb(10, 10, 10);
+  --font-size: 20px;
+  --text-clr: rgb(245, 245, 245);
+
   --switch-duration: 400ms;
   
   --little-card-duration: 700ms;
@@ -27,13 +29,33 @@
   --button-background-clr: rgb(200, 200, 200);
 }
 
-.card-groups, 
+
+.text-group {
+    position: absolute;
+    font-family: Consolas;
+    line-height: 15px;
+    font-weight: bold;
+    left: 15%;
+    top: 20%;
+    font-size: var(--font-size);
+    color: transparent;
+}
+
+.text:first-child {
+    font-size: 35px;
+}
+
+#card-content {
+    transform: translate(80%, -10%);
+}
+
+#card-groups, 
 .card-group,
 .card {
   aspect-ratio: var(--card-aspect-ratio);
 }
 
-.card-groups,
+#card-groups,
 .card-group,
 .big-card {  
   width: var(--big-card-width);
@@ -42,7 +64,6 @@
 
 .card-group {
     position: absolute;
-    transform: translateX(-50%);
     transition: transform var(--switch-duration) ease;
 }
 
@@ -53,25 +74,38 @@
 
 .card-group[data-status="active"] {
   transition-delay: 300ms;
+  color: var(--text-clr);
 }
 
 .card-group[data-status="after"] {
-  transform: translateX(75%) scale(0) rotate(25deg);
+  transform: translateX(100%) scale(0) rotate(25deg);
 }
 
 .card-group[data-status="before"] {
-  transform: translateX(-150%) scale(0) rotate(-25deg);
+  transform: translateX(-100%) scale(0) rotate(-25deg);
 }
 
 .card-group[data-status="becoming-active-from-after"] {
-  transform: translateX(75%) scale(0) rotate(25deg);
+  transform: translateX(100%) scale(0) rotate(25deg);
   transition: none;
 }
 
 .card-group[data-status="becoming-active-from-before"] {
-  transform: translateX(-150%) scale(0) rotate(-25deg);
+  transform: translateX(-100%) scale(0) rotate(-25deg);
   transition: none;
 }
+
+
+.text-group[data-status="unknown"] {
+    transform: scale(0);
+    transition: none;
+}
+
+.text-group[data-status="active"] {
+    transition-delay: 300ms;
+    color: white;
+}
+
 
 
 .card {
@@ -103,7 +137,7 @@
 
 .big-card:nth-child(1) {transform: translate(-20%) rotate(-7deg);}
 
-.big-card:nth-child(2) {transform: translate(-7.5%); }
+.big-card:nth-child(2) {transform: translate(-7.5%);}
 
 .big-card:nth-child(3) {transform: translate(15%) rotate(5deg);}
 
@@ -128,7 +162,7 @@
 
 
 #card-swiper-buttons {
-  margin-top: 25vmin;
+  margin-top: 15vmin;
 }
 
 #card-swiper-buttons > button {

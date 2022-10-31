@@ -11,18 +11,24 @@
 </head>
 <body>
 
-    <div id="card-groups"></div>
+    <div id="text-content"></div>
 
-    <div id="card-swiper-buttons">
-        <button onclick="handleLeftButton()">
-            <i class="fa-solid fa-arrow-left"></i>
-        </button>
-        <button onclick="handleRightButton()">
-            <i class="fa-solid fa-arrow-right"></i>
-        </button>
+    <div id="card-content">
+
+        <div id="card-groups"></div>
+
+        <div id="card-swiper-buttons">
+            <button onclick="handleLeftButton()">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <button onclick="handleRightButton()">
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+
     </div>
 
-    <input type="file" id="excel-file"/>
+    <input type="file" id="excel-file" />
 
     <script>
 
@@ -40,43 +46,59 @@
 
                 var workBook = XLSX.read(data, { type: 'array' });
 
-                // sheet 
+                // sheet
                 var sheetName = workBook.SheetNames;  // name
-                var sheetData = XLSX.utils.sheet_to_json(workBook.Sheets[sheetName[0]], { header: 1 });  // data 
+                var sheetData = XLSX.utils.sheet_to_json(workBook.Sheets[sheetName[0]], { header: 1 });  // data
+
+                var textGroups = "";  // card groups descriptions
 
                 // cards
                 var cardGroups = "";
-                var cardGroupIndex = -1;
+                var currentIndex = -1;
 
                 for (var row = 0; row < sheetData.length; row++) {
 
                     // if hero exists on row
                     if (sheetData[row][0]) {
 
-                        // card group settings 
-                        cardGroupIndex += 1;
-                        var cardGroupStatus = cardGroupIndex == 0 ? "active" : "unknown";
+                        currentIndex += 1;  // index of group
 
-                        var cardGroup = `<div class='card-group' data-index='${cardGroupIndex}' data-status='${cardGroupStatus}'>`;  // card group
+                        // card group
+                        var groupStatus = currentIndex == 0 ? "active" : "unknown";
+                        var cardGroup = `<div class='card-group' data-index='${currentIndex}' data-status='${groupStatus}'>`;  // card group
+
+                        var textGroup = `<div class='text-group' text-index='${currentIndex}' data-status='${groupStatus}'>`;  // card group
 
                         for (var col = 0; col < 8; col++) {
 
-                            // card settings
                             var cardType = col < 4 ? "big-card" : "little-card", cardLink = sheetData[row + col + 1][1];
+                            var card = `<div class='card ${cardType}' style='background-image: url(${cardLink})'></div>`;  // card
 
-                            var card = `<div class='card ${cardType}' style='background-image: url(${cardLink})'></div>`;  // card 
+                            cardGroup += card;  // adding card => card group
 
-                            cardGroup += card;  // adding the card to its group
+                            var text = sheetData[row + col + 1][2];
+                            if (text) {
+                                var textTag = `<p class='text'>${text}</p>`;  // card
+
+                                textGroup += textTag;  // adding text => text group
+                            }
+
                         }
 
-                        cardGroup += "</div>";
-                        cardGroups += cardGroup;  // adding the card group to the card groups
+                        cardGroup += "</div>";  // completing tag
+                        cardGroups += cardGroup;  // adding card group => card groups
+
+                        textGroup += "</div>";  // completing tag
+                        textGroups += textGroup;  // adding text group => text groups
                     }
 
                 }
 
                 document.getElementById("card-groups").innerHTML = cardGroups;
+                document.getElementById("text-content").innerHTML = textGroups;
+                console.log(textGroups);
                 groups = document.getElementsByClassName("card-group").length;
+
             }
         });
     </script>
