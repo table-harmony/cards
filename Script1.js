@@ -35,7 +35,7 @@ function handleLeftButton() {
     currentTextGroup.dataset.status = "before";
 
     nextCardGroup.dataset.status = "becoming-active-from-after";
-    nextTextGroup.dataset.status = "becoming-active-from-after";
+    nextTextGroup.dataset.status = "becoming-active-from-before";
 
     setTimeout(() => {
         nextCardGroup.dataset.status = "active";

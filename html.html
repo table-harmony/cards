@@ -5,8 +5,8 @@
     <meta charset="utf-8" />
     <title>Anime</title>
     <script src="Script1.js"></script>
-    <script src="https://kit.fontawesome.com/944eb371a4.js"></script>
     <script src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+    <script src="https://kit.fontawesome.com/944eb371a4.js"></script>
     <link rel="stylesheet" href="StyleSheet.css" />
 </head>
 <body>
@@ -28,11 +28,11 @@
 
     </div>
 
-    <input type="file" id="excel-file" />
+    <input type="file" id="excel-file" value="excel-file"/>
 
     <script>
 
-        const excelFile = document.getElementById('excel-file');
+        const excelFile = document.getElementById("excel-file");
 
         excelFile.addEventListener('change', (event) => {
 
@@ -101,6 +101,8 @@
 
             }
         });
+
     </script>
+
 </body>
 </html>
