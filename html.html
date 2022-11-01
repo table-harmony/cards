@@ -54,42 +54,55 @@
 
                 // cards
                 var cardGroups = "";
-                var currentIndex = -1;
+                var currentGroupIndex = -1;
 
                 for (var row = 0; row < sheetData.length; row++) {
 
-                    // if hero exists on row
+                    // if seires exists 
                     if (sheetData[row][0]) {
 
-                        currentIndex += 1;  // index of group
+                        var seiresName = sheetData[row][0].replace(" ", "-");
 
-                        // card group
-                        var groupStatus = currentIndex == 0 ? "active" : "unknown";
-                        var cardGroup = `<div class='card-group' data-index='${currentIndex}' data-status='${groupStatus}'>`;  // card group
+                        row++;
 
-                        var textGroup = `<div class='text-group' text-index='${currentIndex}' data-status='${groupStatus}'>`;  // card group
+                        for (var col = 0; col < sheetData[row].length; col++) {
 
-                        for (var col = 0; col < 8; col++) {
+                            // if card group exists
+                            if (sheetData[row][col]) {
 
-                            var cardType = col < 4 ? "big-card" : "little-card", cardLink = sheetData[row + col + 1][1];
-                            var card = `<div class='card ${cardType}' style='background-image: url(${cardLink})'></div>`;  // card
+                                currentGroupIndex += 1;  // index of group
 
-                            cardGroup += card;  // adding card => card group
+                                // card group
+                                var groupStatus = currentGroupIndex == 0 ? "active" : "unknown";
+                                var cardGroup = `<div class='card-group' data-index='${currentGroupIndex}' data-status='${groupStatus}'>`;  // card group
 
-                            var text = sheetData[row + col + 1][2];
-                            if (text) {
-                                var textTag = `<p class='text'>${text}</p>`;  // card
+                                var textGroup = `<div class='text-group ${seiresName}' text-index='${currentGroupIndex}' data-status='${groupStatus}'>`;  // card group
 
-                                textGroup += textTag;  // adding text => text group
+                                for (var groupDataIndex = 0; groupDataIndex < 8; groupDataIndex++) {
+
+                                    var cardType = groupDataIndex < 4 ? "big-card" : "little-card", cardLink = sheetData[row + groupDataIndex + 1][col + 1];
+                                    var card = `<div class='card ${cardType}' style='background-image: url(${cardLink})'></div>`;  // card
+
+                                    cardGroup += card;  // adding card => card group
+
+                                    var text = sheetData[row + groupDataIndex + 1][col + 2];
+                                    if (text) {
+                                        var textTag = `<p class='text'>${text}</p>`;  // card
+
+                                        textGroup += textTag;  // adding text => text group
+                                    }
+
+                                }
+
+                                cardGroup += "</div>";  // completing tag
+                                cardGroups += cardGroup;  // adding card group => card groups
+
+                                textGroup += "</div>";  // completing tag
+                                textGroups += textGroup;  // adding text group => text groups
+
                             }
 
                         }
-
-                        cardGroup += "</div>";  // completing tag
-                        cardGroups += cardGroup;  // adding card group => card groups
-
-                        textGroup += "</div>";  // completing tag
-                        textGroups += textGroup;  // adding text group => text groups
                     }
 
                 }
@@ -106,3 +119,5 @@
 
 </body>
 </html>
+
+                       

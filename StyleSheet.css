@@ -117,6 +117,13 @@
     color: var(--text-clr);
 }
 
+.Bleach[data-status="active"] {
+}
+
+.Detective-Conan[data-status="active"] {
+}
+
+
 .card {
   position: absolute;
   background-size: cover;
