@@ -16,8 +16,8 @@ function handleRightButton() {
     nextCardGroup.dataset.status = "becoming-active-from-before";
     nextTextGroup.dataset.status = "becoming-active-from-before";
 
-    nextTextGroup.dataset.status = "active";
     setTimeout(() => {
+        nextTextGroup.dataset.status = "active";
         nextCardGroup.dataset.status = "active";
         activeIndex = nextIndex;
     });

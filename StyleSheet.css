@@ -1,32 +1,36 @@
 ﻿body {
-    background-color: var(--background-clr);
+    background-color: var(--bg-clr);
     margin: 0px;
     height: 100vh;
     display: grid;
     place-items: center;
 }
 
-:root {
-  --background-clr: rgb(10, 10, 10);
-  --font-size: 20px;
-  --text-clr: rgb(245, 245, 245);
 
-  --switch-duration: 400ms;
-  
-  --little-card-duration: 700ms;
-  --little-card-width: 13vmin;
-  --little-card-shadow-clr: rgba(100, 100, 0, 0.25);
-  
-  --big-card-duration: 600ms;
-  --big-card-width: 30vmin;
-  --big-card-shadow-clr: rgba(0, 0, 0, 0.7);
-  
-  --card-aspect-ratio: 5 / 7;
-  
-  --button-size: 9vmin;
-  --button-font-size: 3.5vmin;
-  --button-clr: rgb(200, 200, 200);
-  --button-background-clr: rgb(200, 200, 200);
+:root {
+    --bg-clr: rgb(10, 10, 10);
+
+    --font-size: 20px;
+    --text-clr: rgb(245, 245, 245);
+
+    --switch-duration: 400ms;
+
+    --little-card-duration: 700ms;
+    --little-card-width: 13vmin;
+    --little-card-shadow-clr: rgba(100, 100, 0, 0.25);
+
+    --big-card-duration: 600ms;
+    --big-card-width: 30vmin;
+    --big-card-shadow-clr: rgba(0, 0, 0, 0.7);
+
+    --card-aspect-ratio: 5 / 7;
+
+    --btn-size: 9vmin;
+    --btn-font-size: 20px;
+
+    --hate-clr: rgb(33, 150, 243);
+
+    --heart-clr: red;
 }
 
 
@@ -45,6 +49,10 @@
 
 .text:first-child {
     font-size: 35px;
+}
+
+.text:first-letter {
+    text-transform: uppercase;
 }
 
 
@@ -106,9 +114,8 @@
 
 .text-group[data-status="active"] {
     transition-delay: 300ms;
-    color: white;
+    color: var(--text-clr);
 }
-
 
 .card {
   position: absolute;
@@ -163,27 +170,39 @@
 .card-group:hover > .little-card:nth-child(8) {transform: translate(195%, 145%) rotate(10deg);}
 
 
-#card-swiper-buttons {
+#card-swiper {
   margin-top: 15vmin;
 }
 
-#card-swiper-buttons > button {
-  font-size: var(--button-font-size);
-  border: 0.4vmin solid var(--button-background-clr);
-  border-radius: 100%;
-  background: transparent;
-  color: var(--button-clr);
-  width: var(--button-size);
-  height: var(--button-size);
-  margin: 0vmin 3vmin;
-  cursor: pointer;
+#card-swiper > button {
+    background: transparent;
+    border: 0.4vmin solid;
+    border-radius: 100%;
+    font-size: var(--btn-font-size);
+    width: var(--btn-size);
+    height: var(--btn-size);
+    margin: 0vmin 3vmin;
+    cursor: pointer;
 }
 
-#card-swiper-buttons > button:hover {
-  box-shadow: 0 0 7.5px var(--button-background-clr);
+#hate-button {
+    color: var(--hate-clr);
 }
 
-input {
+#heart-button {
+    color: var(--heart-clr);
+}
+
+#hate-button:hover {
+    box-shadow: 0 0 6px var(--hate-clr);
+}
+
+#heart-button:hover {
+    box-shadow: 0 0 6px var(--heart-clr);
+}
+
+
+#excel-file {
     position: absolute;
     bottom: 20px;
     left: 0;
