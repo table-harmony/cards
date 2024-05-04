@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Cards</title>
+    <script src="index.js"></script>
+    <script src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/4b3dad24b2.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div id="text-content"></div>
+
+    <div id="card-content">
+      <div id="card-groups"></div>
+
+      <div id="card-swiper">
+        <button id="hate-button" onclick="handleLeftButton()">
+          <i class="fa-solid fa-arrow-left"></i>
+        </button>
+        <button id="heart-button" onclick="handleRightButton()">
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <input type="file" id="excel-file" />
+    <script src="read.js"></script>
+  </body>
+</html>

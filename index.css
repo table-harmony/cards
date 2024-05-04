@@ -1,0 +1,231 @@
+﻿body {
+  background-color: var(--bg-clr);
+  margin: 0px;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+:root {
+  --bg-clr: rgb(10, 10, 10);
+
+  --font-size: 20px;
+  --text-clr: rgb(245, 245, 245);
+
+  --switch-duration: 400ms;
+
+  --little-card-duration: 700ms;
+  --little-card-width: 13vmin;
+  --little-card-shadow-clr: rgba(100, 100, 0, 0.25);
+
+  --big-card-duration: 600ms;
+  --big-card-width: 30vmin;
+  --big-card-shadow-clr: rgba(0, 0, 0, 0.7);
+
+  --card-aspect-ratio: 5 / 7;
+
+  --btn-size: 9vmin;
+  --btn-font-size: 20px;
+
+  --hate-clr: rgb(33, 150, 243);
+
+  --heart-clr: red;
+}
+
+.text-group {
+  position: absolute;
+  left: 10%;
+  top: 20%;
+  font-family: Consolas;
+  line-height: 15px;
+  max-width: 750px;
+  font-weight: bold;
+  font-size: var(--font-size);
+  color: transparent;
+  transition: color 350ms;
+}
+
+.text:first-child {
+  font-size: 35px;
+}
+
+.text:first-letter {
+  text-transform: uppercase;
+}
+
+#card-content {
+  transform: translate(80%, -10%);
+}
+
+#card-groups,
+.card-group,
+.card {
+  aspect-ratio: var(--card-aspect-ratio);
+}
+
+#card-groups,
+.card-group,
+.big-card {
+  width: var(--big-card-width);
+}
+
+.card-group {
+  position: absolute;
+  transition: transform var(--switch-duration) ease;
+}
+
+.card-group[data-status="unknown"] {
+  transform: scale(0);
+  transition: none;
+}
+
+.card-group[data-status="active"] {
+  transition-delay: 300ms;
+  color: var(--text-clr);
+}
+
+.card-group[data-status="after"] {
+  transform: translateX(100%) scale(0) rotate(25deg);
+}
+
+.card-group[data-status="before"] {
+  transform: translateX(-100%) scale(0) rotate(-25deg);
+}
+
+.card-group[data-status="becoming-active-from-after"] {
+  transform: translateX(100%) scale(0) rotate(25deg);
+  transition: none;
+}
+
+.card-group[data-status="becoming-active-from-before"] {
+  transform: translateX(-100%) scale(0) rotate(-25deg);
+  transition: none;
+}
+
+.text-group[data-status="unknown"] {
+  transform: scale(0);
+  transition: none;
+}
+
+.text-group[data-status="active"] {
+  transition-delay: 300ms;
+  color: var(--text-clr);
+}
+
+.Bleach[data-status="active"] {
+}
+
+.Detective-Conan[data-status="active"] {
+}
+
+.card {
+  position: absolute;
+  background-size: cover;
+  background-position: center;
+  transition: transform cubic-bezier(0.05, 0.43, 0.25, 0.95);
+}
+
+.big-card {
+  box-shadow: -1.5vmin 1.5vmin 2vmin var(--big-card-shadow-clr);
+  border-radius: 3vmin;
+  z-index: 2;
+  transition-duration: var(--big-card-duration);
+}
+
+.little-card {
+  width: var(--little-card-width);
+  border-radius: 2.5vmin;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  transition-duration: var(--little-card-duration);
+  box-shadow: -0.5vmin 0.5vmin 2vmin var(--little-card-shadow-clr);
+}
+
+.big-card:nth-child(1) {
+  transform: translate(-20%) rotate(-7deg);
+}
+
+.big-card:nth-child(2) {
+  transform: translate(-7.5%);
+}
+
+.big-card:nth-child(3) {
+  transform: translate(15%) rotate(5deg);
+}
+
+.big-card:nth-child(4) {
+  transform: translate(35%, 5%) rotate(10deg);
+}
+
+.card-group:hover > .big-card:nth-child(1) {
+  transform: translate(-80%, 10%) rotate(-20deg);
+}
+
+.card-group:hover > .big-card:nth-child(2) {
+  transform: translate(-40%) rotate(-10deg);
+}
+
+.card-group:hover > .big-card:nth-child(3) {
+  transform: translate(20%) rotate(10deg);
+}
+
+.card-group:hover > .big-card:nth-child(4) {
+  transform: translate(80%, 10%) rotate(20deg);
+}
+
+.card-group:hover > .little-card:nth-child(5) {
+  transform: translate(-270%, -175%) rotate(10deg);
+  z-index: 3;
+}
+
+.card-group:hover > .little-card:nth-child(6) {
+  transform: translate(-277.5%, 127.5%) rotate(-10deg);
+  z-index: 3;
+}
+
+.card-group:hover > .little-card:nth-child(7) {
+  transform: translate(205%, -170%) rotate(-15deg);
+}
+
+.card-group:hover > .little-card:nth-child(8) {
+  transform: translate(195%, 145%) rotate(10deg);
+}
+
+#card-swiper {
+  margin-top: 15vmin;
+}
+
+#card-swiper > button {
+  background: transparent;
+  border: 0.4vmin solid;
+  border-radius: 100%;
+  font-size: var(--btn-font-size);
+  width: var(--btn-size);
+  height: var(--btn-size);
+  margin: 0vmin 3vmin;
+  cursor: pointer;
+}
+
+#hate-button {
+  color: var(--hate-clr);
+}
+
+#heart-button {
+  color: var(--heart-clr);
+}
+
+#hate-button:hover {
+  box-shadow: 0 0 6px var(--hate-clr);
+}
+
+#heart-button:hover {
+  box-shadow: 0 0 6px var(--heart-clr);
+}
+
+#excel-file {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+}
